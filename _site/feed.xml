@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lee's Blog</title>
+    <description></description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 16 Oct 2018 23:19:12 +0800</pubDate>
+    <lastBuildDate>Tue, 16 Oct 2018 23:19:12 +0800</lastBuildDate>
+    <generator>Jekyll v3.7.4</generator>
+    
+      <item>
+        <title>Welcome to Lee's blog</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;My blog is moved again!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;lee是谁&quot;&gt;Lee是谁？&lt;/h3&gt;
+&lt;p&gt;这是&lt;a href=&quot;/about&quot;&gt;Lee&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;历史&quot;&gt;历史&lt;/h3&gt;
+
+&lt;p&gt;历史上，Lee这个人换过多次博客，究其原因还是因为穷（服务器到期）。&lt;/p&gt;
+
+&lt;h3 id=&quot;现在&quot;&gt;现在&lt;/h3&gt;
+
+&lt;p&gt;现在，Lee下定决心不再更换并且好好打理。&lt;/p&gt;
+
+&lt;h3 id=&quot;写点啥&quot;&gt;写点啥?&lt;/h3&gt;
+
+&lt;p&gt;Lee的博客什么都写，主要是技术文章。&lt;/p&gt;
+
+&lt;h3 id=&quot;为啥写&quot;&gt;为啥写?&lt;/h3&gt;
+
+&lt;p&gt;Lee的记性越来越差了，好多东西需要写下来。Lee想把一些好的东西分享给大家。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 16 Oct 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/10/16/welcome/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/10/16/welcome/</guid>
+        
+        <category>emotion</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
