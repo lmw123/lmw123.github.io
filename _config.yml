@@ -6,7 +6,7 @@ email: limengwei833@gmail.com
 description: ""
 keyword: ""
 url: "https://lmw123.github.io"              # your host, for absolute URL
-baseurl: "/"         # for example, '/blog' if your blog hosted on 'host/blog'
+baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
@@ -68,7 +68,7 @@ ga_domain: huangxuan.me
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Change the world, or change yourself."
+sidebar-about-description: "Either change the world or be changed."
 sidebar-avatar: /img/me.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
