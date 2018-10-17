@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 16 Oct 2018 23:19:12 +0800</pubDate>
-    <lastBuildDate>Tue, 16 Oct 2018 23:19:12 +0800</lastBuildDate>
+    <pubDate>Wed, 17 Oct 2018 17:41:35 +0800</pubDate>
+    <lastBuildDate>Wed, 17 Oct 2018 17:41:35 +0800</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
@@ -33,12 +33,15 @@
 &lt;h3 id=&quot;为啥写&quot;&gt;为啥写?&lt;/h3&gt;
 
 &lt;p&gt;Lee的记性越来越差了，好多东西需要写下来。Lee想把一些好的东西分享给大家。&lt;/p&gt;
+
+&lt;h3 id=&quot;致谢&quot;&gt;致谢&lt;/h3&gt;
+&lt;p&gt;感谢&lt;a href=&quot;http://huangxuan.me&quot;&gt;Hux&lt;/a&gt;提供的模版&lt;/p&gt;
 </description>
         <pubDate>Tue, 16 Oct 2018 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2018/10/16/welcome/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/10/16/welcome/</guid>
         
-        <category>emotion</category>
+        <category>杂谈</category>
         
         
       </item>
