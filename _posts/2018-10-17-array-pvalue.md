@@ -16,7 +16,6 @@ tags:
 想确定芯片处理时*p*值的cutoff,首先需要知道*p*值是如何得到。
 下面是minfi包中关于detectionP函数的源码。
 
-
 <pre><code>
 function (rgSet, type = "m+u")
 {
