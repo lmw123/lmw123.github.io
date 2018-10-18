@@ -27,6 +27,7 @@ function (rgSet, type = "m+u")
   detP <- matrix(NA_real_, ncol = ncol(rgSet), nrow = length(locusNames),
     dimnames = list(locusNames, sampleNames(rgSet)))
   controlIdx <- getControlAddress(rgSet, controlType = "NEGATIVE")
+
   #以下八行代码用来提取空白对照探针的红绿信号，计算平均值和方差
   r <- getRed(rgSet)
   rBg <- r[controlIdx, ]
