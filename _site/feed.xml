@@ -5,8 +5,8 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 18 Oct 2018 22:19:47 +0800</pubDate>
-    <lastBuildDate>Thu, 18 Oct 2018 22:19:47 +0800</lastBuildDate>
+    <pubDate>Thu, 18 Oct 2018 22:22:11 +0800</pubDate>
+    <lastBuildDate>Thu, 18 Oct 2018 22:22:11 +0800</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
     
       <item>
@@ -16,6 +16,8 @@
 &lt;p&gt;想确定芯片处理时&lt;em&gt;p&lt;/em&gt;值的cutoff,首先需要知道&lt;em&gt;p&lt;/em&gt;值是如何得到。&lt;/p&gt;
 
 &lt;p&gt;下面是minfi包中关于detectionP函数的源码。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; type &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;m+u&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -56,6 +58,7 @@
   detP
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         <pubDate>Wed, 17 Oct 2018 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2018/10/17/array-pvalue/</link>
