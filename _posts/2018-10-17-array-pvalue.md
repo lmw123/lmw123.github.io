@@ -17,8 +17,10 @@ tags:
 
 下面是minfi包中关于detectionP函数的源码。
 
-```r
 
+{% raw %}
+
+```r
 function (rgSet, type = "m+u")
 {
   locusNames <- getManifestInfo(rgSet, "locusNames")
@@ -57,5 +59,6 @@ function (rgSet, type = "m+u")
   }
   detP
 }
-
 ```
+
+{% endraw %}
