@@ -5,9 +5,70 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 17 Oct 2018 17:53:59 +0800</pubDate>
-    <lastBuildDate>Wed, 17 Oct 2018 17:53:59 +0800</lastBuildDate>
+    <pubDate>Thu, 18 Oct 2018 22:19:47 +0800</pubDate>
+    <lastBuildDate>Thu, 18 Oct 2018 22:19:47 +0800</lastBuildDate>
     <generator>Jekyll v3.7.4</generator>
+    
+      <item>
+        <title>甲基化芯片P值cutoff的选择</title>
+        <description>&lt;h2 id=&quot;p值如何得到&quot;&gt;P值如何得到&lt;/h2&gt;
+
+&lt;p&gt;想确定芯片处理时&lt;em&gt;p&lt;/em&gt;值的cutoff,首先需要知道&lt;em&gt;p&lt;/em&gt;值是如何得到。&lt;/p&gt;
+
+&lt;p&gt;下面是minfi包中关于detectionP函数的源码。&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-r&quot; data-lang=&quot;r&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; type &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;m+u&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  locusNames &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; getManifestInfo&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;locusNames&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  detP &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;NA_real_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; ncol &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;ncol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; nrow &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;locusNames&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    dimnames &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;locusNames&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; sampleNames&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+  controlIdx &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; getControlAddress&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; controlType &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;NEGATIVE&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;#以下八行代码用来提取空白对照探针的红绿信号，计算平均值和方差&lt;/span&gt;
+  r &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; getRed&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  rBg &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; r&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;controlIdx&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  rMu &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrixStats&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;colMedians&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rBg&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  rSd &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrixStats&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;colMads&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rBg&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  g &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; getGreen&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  gBg &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; g&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;controlIdx&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  gMu &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrixStats&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;colMedians&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gBg&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  gSd &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; matrixStats&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;colMads&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;gBg&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;#获得一类或二类探针的荧光强度&lt;/span&gt;
+  TypeII &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; getProbeInfo&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; type &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;II&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  TypeI.Red &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; getProbeInfo&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; type &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I-Red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  TypeI.Green &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; getProbeInfo&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; type &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;I-Green&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;#以背景探针的荧光强度作为0假设，计算p值&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;i &lt;span class=&quot;kr&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;ncol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;rgSet&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    intensity &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; r&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;TypeI.Red&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;AddressA&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; r&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;TypeI.Red&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;AddressB&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    detP&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;TypeI.Red&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;Name&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; pnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;intensity&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mean &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; rMu&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+      &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; sd &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; rSd&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    intensity &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; g&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;TypeI.Green&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;AddressA&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; g&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;TypeI.Green&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;AddressB&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    detP&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;TypeI.Green&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;Name&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; pnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;intensity&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mean &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; gMu&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
+      &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; sd &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; gSd&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    intensity &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; r&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;TypeII&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;AddressA&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; g&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;TypeII&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;AddressA&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    detP&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;TypeII&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;Name&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; pnorm&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;intensity&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; mean &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; rMu&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+      gMu&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; sd &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; rSd&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; gSd&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  detP
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+</description>
+        <pubDate>Wed, 17 Oct 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2018/10/17/array-pvalue/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/10/17/array-pvalue/</guid>
+        
+        <category>甲基化</category>
+        
+        <category>芯片</category>
+        
+        <category>数据处理</category>
+        
+        
+      </item>
     
       <item>
         <title>Welcome to Lee's blog</title>
