@@ -27,7 +27,9 @@
     <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
     <!-- Hux change font-awesome CDN to qiniu -->
     <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+<div style="display: none">
+    <script src="https://s19.cnzz.com/z_stat.php?id=1275104188&web_id=1275104188" language="JavaScript"></script>
+</div>
 
     <!-- Hux Delete, sad but pending in China
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -185,6 +187,9 @@
         <li>The hardest thing for me is getting fat.</li>
         <li>Don't read my paper, that will waste your time. Browse my websites and codes.</li>
     </ul>
+    <blockquote>
+        My ability
+    </blockquote>
 
 
 </div>
@@ -212,11 +217,12 @@
         <li>增肥真困难。</li>
         <li>别看我的文章，纯属浪费时间。看看我的网站和代码。</li>
     </ul>
-
-
+    <blockquote>
+        我的能力
+    </blockquote>
 </div>
 
-
+<div id="ability_en" style="width: 100%;height: 300px"></div>
 
 <!-- Handle Language Change -->
 <script type="text/javascript">
@@ -273,7 +279,44 @@
 
 
 
-
+<script src="/js/echarts.min.js "></script>
+<script>
+    option = {
+    tooltip: {},
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius: 3,
+                padding: [3, 5]
+           }
+        },
+        indicator: [
+           { name: 'Hour of sleep（睡眠时间）', max: 100},
+           { name: 'Idea（想法）', max: 100},
+           { name: 'C++', max: 100},
+           { name: 'R', max: 100},
+           { name: 'Python', max: 100},
+           { name: 'Java', max: 100},
+           { name: 'Food intake（食物消耗）', max: 100},
+           { name: 'Biology', max: 100},
+        ]
+    },
+    series: [{
+        name: 'ability',
+        type: 'radar',
+        // areaStyle: {normal: {}},
+        data : [
+             {
+                value : [50, 90, 70, 80, 90, 85, 50, 93],
+            }
+        ]
+    }]
+};
+    echarts.init(document.getElementById("ability_en")).setOption(option)
+</script>
     		</div>
     <!-- Sidebar Container -->
             <div class="
@@ -326,7 +369,7 @@
                             <img src="/img/me.jpg" />
                         
                         
-                            <p>The world is moving away from me since I learned to fly.</p>
+                            <p>Do not say impossible, nothing is impossible.</p>
                         
                         <!-- SNS Link -->
                         <ul class="list-inline">
@@ -348,6 +391,10 @@
                         </ul>
                     </div>
                 </section>
+
+
+
+
                 <!-- Friends Blog -->
                 
     		</div>
@@ -495,6 +542,8 @@
       s.parentNode.insertBefore(hm, s);
     })();
 </script>
+
+
 
 
 
