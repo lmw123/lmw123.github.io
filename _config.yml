@@ -1,7 +1,7 @@
 # Site settings
 title: Lee's Blog
 SEOTitle: Lee's Blog
-header-img: img/home-bg.jpg
+header-img: img/banner/home.jpg
 email: limengwei833@gmail.com
 description: ""
 keyword: "Mengwei Li's Blog"
@@ -10,7 +10,6 @@ baseurl: ""
 
 # SNS settings
 RSS: false
-github_username:    lmw123
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.

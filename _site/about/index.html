@@ -51,28 +51,19 @@
                     <li>
                         <a href="/">Home</a>
                     </li>
-                    
                     <li>
-                        <a href="/not_relase/2018-10-16-meth1/">DNA甲基化从零单排</a>
+                        <a href="/about">About Me</a>
                     </li>
-                    
                     <li>
-                        <a href="/about/">About Me</a>
+                        <a href="/tags">Tags</a>
                     </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
                 </ul>
             </div>
         </div>
     </div>
 </nav>
 <script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
+
     var $body   = document.body;
     var $toggle = document.querySelector('.navbar-toggle');
     var $navbar = document.querySelector('#huxblog_navbar');
@@ -99,14 +90,14 @@
 </script>
 
     <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
+<header class="intro-header" style="background-image: url('/img/banner/about.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
                 <div class="site-heading">
                     <h1>About Me</h1>
                     <!--<hr class="small">-->
-                    <span class="subheading"></span>
+                    <span class="subheading"></span class="subheading">
                 </div>
             </div>
         </div>
@@ -127,14 +118,11 @@
                 col-xs-12
                 post-container
             ">
-    			<!-- Language Selector -->
-<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-    <option value="0" > 中文 Chinese </option>
-    <option value="1" selected> 英语 English </option>
+    			<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 Chinese </option>
+    <option value="1" > 英语 English </option>
 </select>
 
-
-<!-- English Version -->
 <div class="en post-container">
     <blockquote>
         Things about Me
@@ -143,47 +131,36 @@
     <ul>
         <li>My name is Mengwei Li, male.</li>
         <li>I love coffee and beer. </li>
-        <li>My research areas are biology and computer science.</li>
-        <li>My favorite journal is
-            <a href="https://genomebiology.biomedcentral.com" target="_blank">
-                Genome Biology
-            </a>.
-        </li>
-        <li>My favorite paper is "
-            <a href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2013-14-10-r115" target="_blank">
-                DNA methylation age of human tissues and cell types
-            </a>".
-        </li>
         <li>The hardest thing for me is getting fat.</li>
     </ul>
 
     <blockquote>
-        My ability
+        Research interests
     </blockquote>
     <ul>
-        <li>Programming：JAVA, R, Python, JS</li>
-        <li>Bioinfomatics：DNA methylation array and WGBS data analysis</li>
+        <li>DNA methylation data analysis</li>
+        <li>Integration of epigenetic data and knowledge</li>
+        <li>Tissue-specific methylation</li>
+        <li>Data visualization</li>
+    </ul>
+
+    <blockquote>
+        Projects
+    </blockquote>
+    <ul>
+        <li><a href="http://bigd.big.ac.cn/ewas/index" target="_blank">EWAS Atlas</a>:A knowledgebase of epigenome-wide association studies</li>
+        <li><a href="http://bigd.big.ac.cn/ewas/datahub/index" target="_blank">EWAS Datahub</a>:A collection of DNA methylation array data and metadata</li>
     </ul>
 
 </div>
 
-
-<!-- Chinese Version -->
 <div class="zh post-container">
     <blockquote>
         关于我
     </blockquote>
-
     <ul>
         <li>我叫李萌伟，男。</li>
         <li>酷爱咖啡和啤酒。</li>
-        <li>我的研究领域事生物和计算机。</li>
-        <li>我最喜欢的杂志是<a href="https://genomebiology.biomedcentral.com" target="_blank">Genome Biology</a>。</li>
-        <li>我最喜欢的文章是"
-            <a href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2013-14-10-r115" target="_blank">
-                DNA methylation age of human tissues and cell types
-            </a>"。
-        </li>
         <li>增肥真困难。</li>
     </ul>
 
@@ -192,11 +169,21 @@
     </blockquote>
     <ul>
         <li>DNA甲基化数据分析，特别是芯片数据分析</li>
-        <li>表观组数据及知识整合与挖掘</li>
+        <li>表观组数据及知识整合</li>
+        <li>组织特异甲基化</li>
+        <li>数据可视化</li>
     </ul>
+
+    <blockquote>
+        项目
+    </blockquote>
+    <ul>
+        <li><a href="http://bigd.big.ac.cn/ewas/index" target="_blank">EWAS Atlas</a>:表观组关联分析知识库</li>
+        <li><a href="http://bigd.big.ac.cn/ewas/datahub/index" target="_blank">EWAS Datahub</a>:DNA甲基化芯片数据库</li>
+    </ul>
+
 </div>
 
-<!-- Handle Language Change -->
 <script type="text/javascript">
     var $zh = document.querySelector(".zh");
     var $en = document.querySelector(".en");
@@ -273,18 +260,6 @@
                             <p>Big pizza! Big smile!</p>
                         
                         <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/lmw123">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                        </ul>
                     </div>
                 </section>
     		</div>
@@ -299,7 +274,7 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
 
-                    
+
                     <li>
                         <a target="_blank" href="https://github.com/lmw123">
                             <span class="fa-stack fa-lg">
@@ -308,7 +283,15 @@
                             </span>
                         </a>
                     </li>
-                    
+
+                    <li>
+                        <a target="_blank" href="https://twitter.com/mengweili9">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                    </li>
                 </ul>
 
                 <p class="copyright text-muted">
@@ -359,7 +342,6 @@
 
 
 
-<img src="/img/icon_wechat.png" width="0" height="0" />
 
 </body>
 
