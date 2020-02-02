@@ -5,11 +5,6 @@ description: ""
 header-img: "img/banner/about.jpg"
 ---
 
-<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-    <option value="0" selected> 中文 Chinese </option>
-    <option value="1" > 英语 English </option>
-</select>
-
 <div class="en post-container">
     <blockquote>
         Things about Me
@@ -40,49 +35,3 @@ header-img: "img/banner/about.jpg"
     </ul>
 
 </div>
-
-<div class="zh post-container">
-    <blockquote>
-        关于我
-    </blockquote>
-    <ul>
-        <li>我叫李萌伟，男。</li>
-        <li>酷爱咖啡和啤酒。</li>
-        <li>增肥真困难。</li>
-    </ul>
-
-    <blockquote>
-        研究方向
-    </blockquote>
-    <ul>
-        <li>DNA甲基化数据分析，特别是芯片数据分析</li>
-        <li>表观组数据及知识整合</li>
-        <li>组织特异甲基化</li>
-        <li>数据可视化</li>
-    </ul>
-
-    <blockquote>
-        项目
-    </blockquote>
-    <ul>
-        <li><a href="http://bigd.big.ac.cn/ewas/index" target="_blank">EWAS Atlas</a>:表观组关联分析知识库</li>
-        <li><a href="http://bigd.big.ac.cn/ewas/datahub/index" target="_blank">EWAS Datahub</a>:DNA甲基化芯片数据库</li>
-    </ul>
-
-</div>
-
-<script type="text/javascript">
-    var $zh = document.querySelector(".zh");
-    var $en = document.querySelector(".en");
-    function onLanChange(index){
-        if(index == 0){
-            $zh.style.display = "block";
-            $en.style.display = "none";
-
-        }else{
-            $en.style.display = "block";
-            $zh.style.display = "none";
-        }
-    }
-    onLanChange(0);
-</script>
